@@ -6,7 +6,7 @@ import org.testng.Assert;
 
 
 public class CatalogPage extends BasePage {
-    private  By vacuumItem=By.xpath("(//*[@class='search__result'])[8]");
+    private  By vacuumItem=By.xpath("(//*[@class='search__result'])[1]");
     private By loginButton = By.cssSelector("div[class$=text]");
     private By shoppingCartButton = By.xpath("(//*[contains(@class,'auth-bar__item--cart')])");
     private By catalogNavigation = By.xpath("(//*[@class='b-main-navigation__text'])[1]");

@@ -9,13 +9,9 @@ import org.testng.annotations.Test;
 public class BoundaryValuesTest extends BaseTest {
     String email = "testqa@gmail.com";
 
-    @BeforeMethod
-    public void getStarted() {
-        driver.get(context.getSuite().getParameter("url"));
-    }
-
     @Test(dataProvider = "invalidData")
     public void invalidRegistration(User user) {
+        get(CatalogPage.class).open();
         get(CatalogPage.class).verificationPage();
         get(CatalogPage.class).clickOnLoginButton().clickOnRegistrationLink();
         get(RegisterPage.class).verificationPage();

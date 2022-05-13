@@ -8,13 +8,12 @@ import org.testng.annotations.Test;
 import java.awt.*;
 
 public class UploadImageTest extends BaseTest {
-    @BeforeTest
-    public void getStarted() {
-        driver.get(context.getSuite().getParameter("url"));
-    }
+
+
 
     @Test
     public void uploadImageWithYandex() throws InterruptedException, AWTException {
+        get(MainPageYandex.class).open();
         get(MainPageYandex.class).verificationPage();
         get(MainPageYandex.class).openYandexImages();
         get(YandexImagesPage.class).uploadImage().verifyUpload().goToResultLink();

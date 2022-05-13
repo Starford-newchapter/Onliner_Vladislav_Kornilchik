@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Boundary Values " parallel="tests">
-    <parameter name="browser" value="CHROME"/>
-    <parameter name="url" value="https://catalog.onliner.by/"/>
+    <parameter name="config" value="onliner"/>
     <test name="Boundary Values Registration Password">
         <classes>
             <class name="BoundaryValuesTest"/>

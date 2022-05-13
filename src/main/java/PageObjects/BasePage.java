@@ -1,5 +1,7 @@
 package PageObjects;
 
+import Configuration.PropertyReader;
+import TestngUtills.Listener;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -22,13 +24,13 @@ public abstract class BasePage {
     protected WebDriverWait wait;
     protected Actions actions;
     protected Properties properties;
-    protected  Alert alert;
 
 
     protected BasePage() {
         this.driver = getDriver();
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
         this.actions = new Actions(this.driver);
+        this.properties=PropertyReader.getProperties();
     }
 
      protected  abstract  void verificationPage();
