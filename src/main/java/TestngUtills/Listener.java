@@ -9,8 +9,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import static BaseObjects.DriverCreation.createDriver;
+import java.util.Properties;
 
+import static BaseObjects.DriverCreation.createDriver;
+import Properties.PropertyReader;
 
 public class Listener implements ITestListener {
     private static String browserName;
