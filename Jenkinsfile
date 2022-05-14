@@ -18,6 +18,7 @@ pipeline {
         steps{
             bat 'mvn clean test -Dsuite=${env.SUITE}'
         }
+    }
                 stage('Reports') {
                     steps {
                         script {
@@ -33,9 +34,3 @@ pipeline {
                 }
             }
         }
-
-
-
-
-
-
