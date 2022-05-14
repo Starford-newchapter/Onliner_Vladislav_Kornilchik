@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Smoke Test " parallel="tests">
+    <parameter name="config" value="onliner"/>
+    <test name="Boundary Values">
+        <classes>
+            <class name="BoundaryValuesTest"/>
+        </classes>
+    </test>
+    <test name="DialogWindow Test">
+        <classes>
+            <class name="DialogWindowTest"/>
+        </classes>
+    </test>
+</suite>

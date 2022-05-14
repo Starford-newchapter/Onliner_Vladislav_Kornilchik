@@ -1,7 +1,6 @@
 package PageObjects;
 
 import Configuration.PropertyReader;
-import TestngUtills.Listener;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -16,7 +15,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
 
-
 import static BaseObjects.DriverCreation.getDriver;
 
 public abstract class BasePage {
@@ -30,10 +28,10 @@ public abstract class BasePage {
         this.driver = getDriver();
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
         this.actions = new Actions(this.driver);
-        this.properties=PropertyReader.getProperties();
+        this.properties = PropertyReader.getProperties();
     }
 
-     protected  abstract  void verificationPage();
+    protected abstract void verificationPage();
 
     public BasePage open() {
         String url = properties.getProperty("url");
@@ -56,18 +54,23 @@ public abstract class BasePage {
         return this;
     }
 
-    public Boolean isElementExist(By element) {
+    protected Boolean isElementExist(By element) {
         List<WebElement> elementList = findElements(element);
         return elementList.size() > 0;
 
     }
 
-    protected  BasePage uploadFile(String pathToFile,String fileName,By uploadFileButton)throws InterruptedException, AWTException{
-        StringSelection stringSelection = new StringSelection(pathToFile+fileName);
+    protected BasePage uploadFile(String pathToFile, String fileName, By uploadFileButton) {
+        StringSelection stringSelection = new StringSelection(pathToFile + fileName);
         Toolkit.getDefaultToolkit().getSystemClipboard()
                 .setContents(stringSelection, null);
         clickButton(uploadFileButton);
-        Robot robot = new Robot();
+        Robot robot = null;
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
         robot.delay(1000);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.delay(300);
@@ -82,13 +85,17 @@ public abstract class BasePage {
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(300);
         sleep(5);
-        return  this;
+        return this;
 
     }
 
-    protected  String returnElementArray(By element,int n){
-        String[] array=getText(element).split(" ");
-        return  array[n];
+    protected String getProperty(String property) {
+        return properties.getProperty(property);
+    }
+
+    protected String returnElementArray(By element, int n) {
+        String[] array = getText(element).split(" ");
+        return array[n];
     }
 
 

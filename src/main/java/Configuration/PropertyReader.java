@@ -15,13 +15,14 @@ public class PropertyReader {
         this.propertyName = propertyName;
         properties = new Properties();
         try {
-            properties.load(getClass().getClassLoader().getResourceAsStream(this.propertyName+".properties"));
+            FileInputStream inputStream = new FileInputStream("src/main/resources/" + this.propertyName + ".properties");
+            properties.load(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public  static Properties getProperties() {
+    public static Properties getProperties() {
         return properties;
     }
 }

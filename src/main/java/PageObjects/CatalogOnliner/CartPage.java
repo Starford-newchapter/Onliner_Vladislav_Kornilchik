@@ -41,7 +41,7 @@ public class CartPage extends BasePage {
     }
 
     public CartPage checkCountItemsInCart() {
-        Assert.assertEquals(returnElementArray(countItemsInCart,0),"1");
+        Assert.assertEquals(returnElementArray(countItemsInCart, 0), "1");
         return this;
 
     }

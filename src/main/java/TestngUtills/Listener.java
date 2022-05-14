@@ -15,7 +15,7 @@ public class Listener implements ITestListener {
     @Override
     public void onStart(ITestContext context) {
         this.context = context;
-        new PropertyReader(context.getSuite().getParameter("config")==null?System.getProperty("config"):context.getSuite().getParameter("config"));
+        new PropertyReader(context.getSuite().getParameter("config") == null ? System.getProperty("config") : context.getSuite().getParameter("config"));
         this.properties = PropertyReader.getProperties();
         createDriver(properties.getProperty("browser") == null ? "chrome" : properties.getProperty("browser"));
     }

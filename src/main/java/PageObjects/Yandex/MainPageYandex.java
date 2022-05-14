@@ -9,7 +9,6 @@ public class MainPageYandex extends BasePage {
     private By yandexLogo = By.className("home-logo__default");
     private By searchField = By.id("text");
     private By imagesIcon = By.xpath("(//*[contains(@class,'new__icon_images')])");
-    private String imagesLink = "https://yandex.by/images/?utm_source=main_stripe_big";
 
     @Override
     public void verificationPage() {
@@ -25,7 +24,7 @@ public class MainPageYandex extends BasePage {
     }
 
     public MainPageYandex openYandexImages() {
-        open(imagesLink);
+        open(getProperty("imagesLink"));
         return this;
     }
 }

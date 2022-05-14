@@ -14,15 +14,15 @@ public class RegisterPage extends BasePage {
     private By checkbox = By.className("i-checkbox__faux");
     private By errorCheckbox = By.className("growl-content");
     private By errorPassword = By.xpath("//*[contains(text(),'должен')]");
-    private  By confirmEmail=By.xpath("//*[contains(@class,'auth-form__title_big')]");
-    private  By successRegistration=By.xpath("//*[contains(text(),'отправили')]");
-    private String errorCheckBoxText = "Для регистрации аккаунта необходимо ваше согласие с Политикой конфиденциальности и Пользовательским соглашением";
-    private String textErrorPassword = "Пароль должен быть от 8 до 64 символов";
+    private By errorEmail = By.xpath("//*[contains(text(),'Некорректный e-mail')]");
+    private By confirmEmail = By.xpath("//*[contains(@class,'auth-form__title_big')]");
+    private By successRegistration = By.xpath("//*[contains(text(),'отправили')]");
 
-    public  RegisterPage  isRegistrationSuccess(String email){
-        Assert.assertEquals(getText(confirmEmail),"Подтвердите ваш e-mail");
-        Assert.assertEquals(returnElementArray(successRegistration,3),email);
-        return  this;
+
+    public RegisterPage isRegistrationSuccess(String email) {
+        Assert.assertEquals(getText(confirmEmail), "Подтвердите ваш e-mail");
+        Assert.assertEquals(returnElementArray(successRegistration, 3), email);
+        return this;
     }
 
 
@@ -59,12 +59,17 @@ public class RegisterPage extends BasePage {
 
     public RegisterPage getCheckBoxError() {
         Assert.assertTrue(isElementDisplayed(errorCheckbox));
-        Assert.assertEquals(getText(errorCheckbox), errorCheckBoxText);
+        Assert.assertEquals(getText(errorCheckbox), getProperty("errorCheckBoxText"));
         return this;
     }
 
     public RegisterPage getPasswordError() {
-        Assert.assertEquals(getText(errorPassword), textErrorPassword);
+        Assert.assertEquals(getText(errorPassword), getProperty("textErrorPassword"));
+        return this;
+    }
+
+    public RegisterPage getEmailError() {
+        Assert.assertEquals(getText(errorEmail), "Некорректный e-mail");
         return this;
     }
 
