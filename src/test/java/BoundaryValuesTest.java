@@ -45,7 +45,7 @@ public class BoundaryValuesTest extends BaseTest {
 
 
     @DataProvider(name = "invalidData")
-    public Object[][] validUser() {
+    public Object[][] invalidUser() {
         return new Object[][]{
                 {new User.UserBuilder().withLogin(validEmail).withPassword("1234567").build()}, // length password=7
                 {new User.UserBuilder().withLogin(validEmail)
@@ -54,7 +54,7 @@ public class BoundaryValuesTest extends BaseTest {
     }
 
     @DataProvider(name = "validData")
-    public Object[][] invalidUser() {
+    public Object[][] validUser() {
         return new Object[][]{
                 {new User.UserBuilder().withLogin(validEmail).withPassword("1234567q").build()},// length password=8
                 {new User.UserBuilder().withLogin(validEmail).withPassword("1234567qw").build()}, // length password=9
