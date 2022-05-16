@@ -12,8 +12,6 @@ public class CatalogPage extends BasePage {
     private By catalogNavigation = By.xpath("(//*[@class='b-main-navigation__text'])[1]");
     private By onlinerLogo = By.className("onliner_logo");
     private By registrationLink = By.xpath("(//*[contains(@href,'registration')])");
-    private String urlRegistration = "https://profile.onliner.by/registration";
-    private String urlRecoverPassword = "https://profile.onliner.by/recover-password";
     private By trimmersTab = By.cssSelector("#widget-5-8 [href$='trimmers']");
     private By vacuumCleanerTab = By.cssSelector("#widget-3-8 [href$='vacuumcleaner']");
     private By addToCartButton = By.xpath("//*[contains(text(),'В корзину')]");
@@ -27,35 +25,42 @@ public class CatalogPage extends BasePage {
 
     public CatalogPage searchInformation(String text) {
         clickButton(searchField);
+        log.debug("Open Search");
         findElement(searchField).sendKeys(text);
+        log.debug("Send "+text+" in search");
         sleep(2);
         return this;
     }
 
     public CatalogPage clickOnRegistrationLink() {
         clickButton(registrationLink);
+        log.debug("Click on Registration Link");
         return this;
     }
 
 
     public CatalogPage openRegisterPage() {
-        open(urlRegistration);
+        open(getProperty("urlRegistration"));
+        log.debug("Open Registration Page");
         return this;
     }
 
-    public CatalogPage OpenRecoverPasswordPage() {
-        open(urlRecoverPassword);
+    public CatalogPage openRecoverPasswordPage() {
+        open(getProperty("urlRecoverPassword"));
+        log.debug("Open Password Recovery Page");
         return this;
     }
 
 
     public CatalogPage clickOnLoginButton() {
         clickButton(loginButton);
+        log.debug("Click on Login Button");
         return this;
     }
 
     public CatalogPage clickOnShoppingCart() {
         clickButton(shoppingCartButton);
+        log.debug("Click on Cart Button");
         sleep(2);
         return this;
     }
@@ -68,7 +73,9 @@ public class CatalogPage extends BasePage {
 
     public CatalogPage chooseVacuumCleaner() {
         driver.switchTo().frame(findElement(iframe));
+        log.debug("Switch to iframe");
         clickButton(vacuumItem);
+        log.debug("Click on Item");
         sleep(1);
         Assert.assertEquals(getText(nameOfItem), "Пылесос Xiaomi Mi G9 MJSCXCQ1T");
         return this;
@@ -76,11 +83,13 @@ public class CatalogPage extends BasePage {
 
     public CatalogPage checkDialogWindow() {
         Assert.assertTrue(isElementExist(iframe));
+        log.debug("Dialog Window  displayed");
         return this;
     }
 
     public CatalogPage addToCard() {
         clickButton(addToCartButton);
+        log.debug("Add Item in Cart");
         sleep(2);
         closeSideBar();
         return this;
@@ -88,11 +97,13 @@ public class CatalogPage extends BasePage {
 
     public CatalogPage closeSideBar() {
         clickButton(sideBarAfterAddToCart);
+        log.debug("Close SideBar");
         return this;
     }
 
     public CatalogPage checkCountItemsInCard(String count) {
         Assert.assertEquals(getText(countItemInCard), count);
+        log.debug("Item was successful added");
         return this;
     }
 

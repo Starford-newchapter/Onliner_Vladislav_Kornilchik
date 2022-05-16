@@ -24,6 +24,7 @@ public class CartPage extends BasePage {
     public CartPage removeItem() {
         actions.moveToElement(findElement(nameOfItem)).perform();
         actions.moveToElement(findElement(removeButton)).click().perform();
+        log.debug("Remove Item From Cart");
         sleep(2);
         return this;
     }
@@ -35,8 +36,10 @@ public class CartPage extends BasePage {
 
     public CartPage closeMessageAfterRemove() {
         clickButton(closeMessageButton);
+        log.debug("Close message after remove");
         Assert.assertTrue(isElementDisplayed(imageCatEmptyCart));
         Assert.assertEquals(getText(emptyCartText), "Ваша корзина пуста");
+        log.debug("Item was successful removed");
         return this;
     }
 

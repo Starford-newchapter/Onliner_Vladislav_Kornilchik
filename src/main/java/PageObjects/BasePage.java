@@ -2,9 +2,11 @@ package PageObjects;
 
 import Configuration.PropertyReader;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -22,6 +24,7 @@ public abstract class BasePage {
     protected WebDriverWait wait;
     protected Actions actions;
     protected Properties properties;
+    protected Logger log = Logger.getLogger(BasePage.class);
 
 
     protected BasePage() {
@@ -85,6 +88,7 @@ public abstract class BasePage {
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(300);
         sleep(5);
+        log.debug("Image " + fileName + " chosen");
         return this;
 
     }
@@ -120,6 +124,7 @@ public abstract class BasePage {
 
     protected BasePage clickCheckbox(By element) {
         click(element);
+        log.debug("Click on checkbox");
         return this;
     }
 

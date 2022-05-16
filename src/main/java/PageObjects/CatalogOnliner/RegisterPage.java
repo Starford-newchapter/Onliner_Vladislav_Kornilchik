@@ -22,22 +22,26 @@ public class RegisterPage extends BasePage {
     public RegisterPage isRegistrationSuccess(String email) {
         Assert.assertEquals(getText(confirmEmail), "Подтвердите ваш e-mail");
         Assert.assertEquals(returnElementArray(successRegistration, 3), email);
+        log.debug("Registration was successful");
         return this;
     }
 
 
     public RegisterPage sendEmail(String email) {
         findElement(emailInput).sendKeys(email);
+        log.debug("Send " + email + " in email field");
         return this;
     }
 
     public RegisterPage sendPassword(String password) {
         findElement(passwordInput).sendKeys(password);
+        log.debug("Send " + password + " in password field");
         return this;
     }
 
     public RegisterPage sendRepeatPassword(String password) {
         findElement(repeatPasswordInput).sendKeys(password);
+        log.debug("Send " + password + " in Repeat Password field");
         return this;
     }
 
@@ -48,6 +52,8 @@ public class RegisterPage extends BasePage {
 
     public RegisterPage clickOnRegisterButton() {
         clickButton(registerButton);
+        log.debug("Click to Register button");
+
         return this;
     }
 
