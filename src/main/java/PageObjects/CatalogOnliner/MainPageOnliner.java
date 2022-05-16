@@ -1,8 +1,10 @@
 package PageObjects.CatalogOnliner;
 
 import PageObjects.BasePage;
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+
 
 public class MainPageOnliner extends BasePage {
     private By onlinerLogo = By.className("onliner_logo");

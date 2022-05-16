@@ -4,6 +4,7 @@ import PageObjects.BasePage;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
+
 public class CartPage extends BasePage {
 
     private By titleCart = By.xpath("//*[contains(@class,'title_condensed-additional')]");

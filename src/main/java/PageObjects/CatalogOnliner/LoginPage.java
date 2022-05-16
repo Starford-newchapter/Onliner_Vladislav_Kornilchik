@@ -2,8 +2,10 @@ package PageObjects.CatalogOnliner;
 
 import Entinty.User;
 import PageObjects.BasePage;
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+
 
 public class LoginPage extends BasePage {
     private By titleLogin = By.xpath("//*[contains(@class,'auth-form__title_condensed-default')]");
