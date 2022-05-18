@@ -18,8 +18,8 @@ public class MainPageOnliner extends BasePage {
     }
 
     public MainPageOnliner goToCatalogPage() {
-        clickButton(catalogOnlinerLink);
         log.debug("Open CatalogOnliner Page");
+        clickButton(catalogOnlinerLink);
         return this;
     }
 }

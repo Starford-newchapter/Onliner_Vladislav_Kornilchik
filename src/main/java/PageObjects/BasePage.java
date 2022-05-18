@@ -64,6 +64,7 @@ public abstract class BasePage {
     }
 
     protected BasePage uploadFile(String pathToFile, String fileName, By uploadFileButton) {
+        log.debug("Image " + fileName + " chosen to upload");
         StringSelection stringSelection = new StringSelection(pathToFile + fileName);
         Toolkit.getDefaultToolkit().getSystemClipboard()
                 .setContents(stringSelection, null);
@@ -88,7 +89,6 @@ public abstract class BasePage {
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(300);
         sleep(5);
-        log.debug("Image " + fileName + " chosen");
         return this;
 
     }
@@ -123,8 +123,8 @@ public abstract class BasePage {
     }
 
     protected BasePage clickCheckbox(By element) {
-        click(element);
         log.debug("Click on checkbox");
+        click(element);
         return this;
     }
 

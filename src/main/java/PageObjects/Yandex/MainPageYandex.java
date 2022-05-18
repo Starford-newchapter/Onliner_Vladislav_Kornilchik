@@ -18,15 +18,15 @@ public class MainPageYandex extends BasePage {
     }
 
     public MainPageYandex clickOnYandexImages() {
-        clickButton(imagesIcon);
         log.debug("Open Yandex Images Page");
+        clickButton(imagesIcon);
         sleep(4);
         return this;
     }
 
     public MainPageYandex openYandexImages() {
-        open(getProperty("imagesLink"));
         log.debug("Open Yandex Images Page");
+        open(getProperty("imagesLink"));
         return this;
     }
 }

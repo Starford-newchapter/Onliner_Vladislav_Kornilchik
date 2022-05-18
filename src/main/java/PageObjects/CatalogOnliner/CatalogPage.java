@@ -25,43 +25,43 @@ public class CatalogPage extends BasePage {
 
 
     public CatalogPage searchInformation(String text) {
-        clickButton(searchField);
         log.debug("Open Search");
-        findElement(searchField).sendKeys(text);
+        clickButton(searchField);
         log.debug("Send "+text+" in search");
+        findElement(searchField).sendKeys(text);
         sleep(2);
         return this;
     }
 
     public CatalogPage clickOnRegistrationLink() {
-        clickButton(registrationLink);
         log.debug("Click on Registration Link");
+        clickButton(registrationLink);
         return this;
     }
 
 
     public CatalogPage openRegisterPage() {
-        open(getProperty("urlRegistration"));
         log.debug("Open Registration Page");
+        open(getProperty("urlRegistration"));
         return this;
     }
 
     public CatalogPage openRecoverPasswordPage() {
-        open(getProperty("urlRecoverPassword"));
         log.debug("Open Password Recovery Page");
+        open(getProperty("urlRecoverPassword"));
         return this;
     }
 
 
     public CatalogPage clickOnLoginButton() {
-        clickButton(loginButton);
         log.debug("Click on Login Button");
+        clickButton(loginButton);
         return this;
     }
 
     public CatalogPage clickOnShoppingCart() {
-        clickButton(shoppingCartButton);
         log.debug("Click on Cart Button");
+        clickButton(shoppingCartButton);
         sleep(2);
         return this;
     }
@@ -73,38 +73,38 @@ public class CatalogPage extends BasePage {
     }
 
     public CatalogPage chooseVacuumCleaner() {
-        driver.switchTo().frame(findElement(iframe));
         log.debug("Switch to iframe");
-        clickButton(vacuumItem);
+        driver.switchTo().frame(findElement(iframe));;
         log.debug("Click on Item");
+        clickButton(vacuumItem);
         sleep(1);
         Assert.assertEquals(getText(nameOfItem), "Пылесос Xiaomi Mi G9 MJSCXCQ1T");
         return this;
     }
 
     public CatalogPage checkDialogWindow() {
-        Assert.assertTrue(isElementExist(iframe));
         log.debug("Dialog Window  displayed");
+        Assert.assertTrue(isElementExist(iframe));
         return this;
     }
 
     public CatalogPage addToCard() {
-        clickButton(addToCartButton);
         log.debug("Add Item in Cart");
+        clickButton(addToCartButton);
         sleep(2);
         closeSideBar();
         return this;
     }
 
     public CatalogPage closeSideBar() {
-        clickButton(sideBarAfterAddToCart);
         log.debug("Close SideBar");
+        clickButton(sideBarAfterAddToCart);
         return this;
     }
 
     public CatalogPage checkCountItemsInCard(String count) {
-        Assert.assertEquals(getText(countItemInCard), count);
         log.debug("Item was successful added");
+        Assert.assertEquals(getText(countItemInCard), count);
         return this;
     }
 

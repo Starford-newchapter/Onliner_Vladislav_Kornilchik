@@ -16,8 +16,8 @@ public class YandexImagesPage extends BasePage {
 
 
     public YandexImagesPage openChooseFileMenu() {
-        clickButton(fileMenuButton);
         log.debug("Open image upload menu");
+        clickButton(fileMenuButton);
         return this;
     }
 
@@ -30,14 +30,14 @@ public class YandexImagesPage extends BasePage {
     }
 
     public YandexImagesPage verifyUpload() {
-        Assert.assertEquals(getText(linkResultOnliner), "onliner.by");
         log.debug("Image upload successful");
+        Assert.assertEquals(getText(linkResultOnliner), "onliner.by");
         return this;
     }
 
     public YandexImagesPage goToResultLink() {
-        open("https://" + getText(linkResultOnliner));
         log.debug("Open Catalog Onliner Page");
+        open("https://" + getText(linkResultOnliner));
         return this;
     }
 
