@@ -2,6 +2,7 @@ import BaseObjects.BaseTest;
 import Entinty.User;
 import PageObjects.CatalogOnliner.CatalogPage;
 import PageObjects.CatalogOnliner.RegisterPage;
+import io.qameta.allure.Attachment;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ public class BoundaryValuesTest extends BaseTest {
     String passwordLength63 = "K27ULwTeSYAah0kIVsbCVfdyAniYBqvt6A04thAKMLKnYK0iCHi2oJOv3MBrE0E";
     String passwordLength64 = "K27ULwTeSYAah0kIVsbCVfdyAniYBqvt6A04thAKMLKnYK0iCHi2oJOv3MBrE0Es";
 
+
     @Test(dataProvider = "invalidData", priority = 2)
     public void invalidRegistration(User user) {
         get(CatalogPage.class).open();
@@ -22,7 +24,6 @@ public class BoundaryValuesTest extends BaseTest {
         get(RegisterPage.class).registration(user).getPasswordError();
 
     }
-
 
     @Test(dataProvider = "validData", priority = 1)
     public void validRegistration(User user) {
