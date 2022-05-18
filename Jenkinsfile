@@ -4,8 +4,9 @@ pipeline {
     tools{
        maven "MAVEN"
     }
-    environment{
-        SUITE='src/test/resources/${params.Suite}.xml'
+
+    environment {
+        SUITE = "src/test/resources/${params.Suite}.xml"
     }
 
     stages {
@@ -16,7 +17,7 @@ pipeline {
         }
     stage('Test run'){
         steps{
-            bat 'mvn clean test -Dsuite=${env.SUITE}'
+             bat 'mvn test -Dsuite=${env.SUITE}'
         }
     }
                 stage('Reports') {
